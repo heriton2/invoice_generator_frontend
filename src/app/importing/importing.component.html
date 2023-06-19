@@ -1,4 +1,9 @@
 <div class="importando-page">
-    <p class="descricao">Faça o upload do arquivo:</p>
-    <button class="upload-button" (click)="importData()">Clique aqui para enviar o arquivo</button>
-  </div>
+  <p class="descricao">Faça o upload do arquivo:</p>
+  <input #fileInput type="file" class="upload-button" accept=".csv" hidden>
+  <button class="upload-button" (click)="fileInput.click()">Clique aqui para enviar o arquivo</button>
+</div>
+<div class="button-container">
+  <button class="back-button" (click)="window.close()">Voltar</button>
+  <button class="next-button" (click)="importData()">Avançar</button>
+</div>

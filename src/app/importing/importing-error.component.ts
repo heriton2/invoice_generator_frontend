@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-importing-error',
@@ -6,7 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./importing-error.component.css']
 })
 export class ImportingErrorComponent {
-  importErrorMessage: string = ''; // Defina a mensagem de erro correta com base na importação real
+  constructor(private router: Router) {}
 
-  // Outras propriedades ou métodos necessários para o componente
+  @Input() importErrorMessage: string = '';
+
+  closePage() {
+    this.router.navigate(['/']); // Navegar para a rota inicial
+  }
 }

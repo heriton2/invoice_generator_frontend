@@ -1,0 +1,56 @@
+.importando {
+  background-color: #f2f2f2;
+  padding: 20px;
+  text-align: center;
+}
+
+.texto-centralizado {
+  margin-bottom: 20px;
+}
+
+.botao-centralizado {
+  display: block;
+  margin: 0 auto;
+}
+
+.botoes-fim-pagina {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.titulo {
+  background-color: lightgray;
+  text-align: center;
+}
+
+.fatura-de-cobranca {
+  padding: 20px;
+}
+
+.importar-button {
+  margin-bottom: 20px;
+}
+
+.tabela-fatura {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabela-fatura th,
+.tabela-fatura td {
+  border: 1px solid lightgray;
+  padding: 8px;
+  text-align: left;
+}
+
+.tabela-fatura thead th {
+  background-color: lightgray;
+}
+
+.tabela-fatura tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+
+

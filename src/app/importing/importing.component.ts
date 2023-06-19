@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-importing',
@@ -6,20 +8,32 @@ import { Component } from '@angular/core';
   styleUrls: ['./importing.component.css']
 })
 export class ImportingComponent {
+  @ViewChild('fileInput') fileInput: any;
 
-    importData() {
+  constructor(private http: HttpClient, private router: Router) {}
 
-        // Aqui você deve fazer a chamada para o endpoint de importação
-        // e atualizar as variáveis de acordo com a resposta do endpoint
+  importErrorMessage: string = '';
+  importSuccessMessage: string = '';
 
-        // Exemplo de chamada fictícia para demonstração:
-        setTimeout(() => {
-            const success = true; // Indica se a importação foi bem-sucedida
-            if (success) {
-            window.open('http://localhost:4200/wizard-importing-sucess', '_blank');
-            } else {
-            window.open('http://localhost:4200/wizard-importing-error', '_blank');
-            }
-        }, 2000); // Simula um tempo de resposta do endpoint
-    }
+  importData() {
+    const file = this.fileInput.nativeElement.files[0];
+    const formData = new FormData();
+    formData.append('file', file);
+
+
+    this.http.post('http://localhost:8080/import', formData, { observe: 'response' }).subscribe(
+      response => {
+        if (response.status === 201) {
+          console.log('Importação concluída com sucesso.');
+          this.router.navigate(['/wizard-importing-success']); // Redirecionar para a rota de sucesso
+        }
+      },
+      error => {
+        this.importErrorMessage = error.message; // Atribuir a mensagem de erro à variável
+        this.router.navigate(['/wizard-importing-error']); // Redirecionar para a rota de erro
+      }
+    );
+  }
+
+  protected readonly window = window;
 }

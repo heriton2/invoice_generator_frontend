@@ -1,0 +1,16 @@
+.importando-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.back-button,
+.next-button {
+  margin-left: 10px;
+}

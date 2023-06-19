@@ -1,0 +1,35 @@
+<div class="fatura-de-cobranca">
+  <button class="importar-button" (click)="openImportingPage()">Importar</button>
+  <h1 class="titulo">FATURA DE COBRANÇA</h1>
+  <table class="tabela-fatura">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>STATUS</th>
+      <th>CNPJ</th>
+      <th>NOME FANTASIA</th>
+      <th>EMAIL</th>
+      <th>VALOR MENSALIDADE</th>
+      <th>VALOR UNITARIO CARTÃO</th>
+      <th>VENCIMENTO</th>
+      <th>AÇÕES</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of displayedItems">
+      <td>{{ item.id }}</td>
+      <td>{{ item.status }}</td>
+      <td>{{ item.cnpj }}</td>
+      <td>{{ item.fantasyName }}</td>
+      <td>{{ item.email }}</td>
+      <td>{{ item.monthlyPrice }}</td>
+      <td>{{ item.unitValueCard }}</td>
+      <td>{{ item.dueDate }}</td>
+      <td>
+        <button *ngIf="item.status === 'PENDENTE'" (click)="generateInvoice(item.id)">Gerar Fatura</button>
+        <button *ngIf="item.status === 'CONCLUIDO'" (click)="viewInvoice(item.id)">Visualizar Fatura</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
