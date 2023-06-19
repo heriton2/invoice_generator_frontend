@@ -13,17 +13,19 @@ export class ImportingComponent {
   constructor(private http: HttpClient, private router: Router) {}
 
   importErrorMessage: string = '';
-  importSuccessMessage: string = '';
+  totalRegistros: number = 0;
 
   importData() {
     const file = this.fileInput.nativeElement.files[0];
     const formData = new FormData();
     formData.append('file', file);
 
-    this.http.post('http://localhost:8080/import', formData).subscribe(
+    this.http.post('http://localhost:8080/import', formData,  { responseType: 'text', observe: "response" }).subscribe(
       response => {
         console.log('Importação concluída com sucesso.');
-        this.router.navigate(['/wizard-importing-success']); // Redirecionar para a rota de sucesso
+        this.totalRegistros = response.body !== null ? parseInt(response.body) : 0;
+        console.log("totalregistros: ", this.totalRegistros)
+        this.router.navigate(['/wizard-importing-success', { totalRegistros: this.totalRegistros }]);
       },
       error => {
         console.error('Erro durante a importação:', error);

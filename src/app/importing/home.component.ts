@@ -8,8 +8,8 @@ interface InvoiceItem {
   cnpj: string;
   fantasyName: string;
   email: string;
-  monthlyPrice: number;
-  unitValueCard: number;
+  monthlyPrice: string;
+  unitValueCard: string;
   dueDate: string;
 }
 

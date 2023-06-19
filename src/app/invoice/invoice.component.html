@@ -11,7 +11,7 @@
     <div class="info-item">
       <span class="label">Vencimento: {{ item?.dueDate }}</span>
     </div>
-    <button class="gerar-pdf-button">Gerar PDF</button>
+    <button class="gerar-pdf-button" (click)="generatePDF()">Gerar PDF</button>
   </div>
   <table class="tabela-fatura">
     <thead>
