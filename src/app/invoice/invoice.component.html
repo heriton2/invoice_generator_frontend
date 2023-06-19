@@ -1,0 +1,37 @@
+<div class="fatura">
+  <h1 class="titulo">FATURA {{item?.fantasyName}}</h1>
+  <h2 class="cnpj">CNPJ: {{ item?.cnpj }}</h2>
+  <div class="info text-right">
+    <div class="info-item">
+      <span class="label">Data de criação: {{ item?.createdDate }}</span>
+    </div>
+    <div class="info-item">
+      <span class="label">E-mail cobrança: {{ item?.email }}</span>
+    </div>
+    <div class="info-item">
+      <span class="label">Vencimento: {{ item?.dueDate }}</span>
+    </div>
+    <button class="gerar-pdf-button">Gerar PDF</button>
+  </div>
+  <table class="tabela-fatura">
+    <thead>
+    <tr>
+      <th>QTDE</th>
+      <th>ITEM</th>
+      <th>VALOR R$ UNITÁRIO</th>
+      <th>VALOR TOTAL R$</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let row of item?.rows || []">
+      <td>{{ row.quantity }}</td>
+      <td>{{ row.item }}</td>
+      <td>{{ row.unitValue }}</td>
+      <td>{{ row.totalValue }}</td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="total">
+    <span class="label">Total da Fatura a Pagar: {{ item?.totalValueToPay }}</span>
+  </div>
+</div>

@@ -15,13 +15,14 @@ interface InvoiceItem {
 
 @Component({
   selector: 'app-fatura-de-cobranca',
-  templateUrl: './invoice.component.html',
-  styleUrls: ['./invoice.component.css']
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class InvoiceComponent implements OnInit {
+export class HomeComponent implements OnInit {
   invoiceItems: InvoiceItem[] = [];
   currentPage = 1;
   itemsPerPage = 10;
+  selectedItem: InvoiceItem | null = null;
 
   constructor(private http: HttpClient,  private router: Router) {}
 
@@ -38,7 +39,13 @@ export class InvoiceComponent implements OnInit {
   }
 
   generateInvoice(id: string) {
-    console.log(`Generate invoice for item with ID ${id}`);
+    this.selectedItem = this.invoiceItems.find(item => item.id === id) || null;
+
+    if (this.selectedItem) {
+      this.router.navigate(['/invoice', id]);
+    } else {
+      console.error(`Item with ID ${id} not found.`);
+    }
   }
 
   previousPage() {

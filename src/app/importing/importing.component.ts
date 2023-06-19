@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
+import { HttpClient } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-importing',
@@ -20,15 +20,13 @@ export class ImportingComponent {
     const formData = new FormData();
     formData.append('file', file);
 
-
-    this.http.post('http://localhost:8080/import', formData, { observe: 'response' }).subscribe(
+    this.http.post('http://localhost:8080/import', formData).subscribe(
       response => {
-        if (response.status === 201) {
-          console.log('Importação concluída com sucesso.');
-          this.router.navigate(['/wizard-importing-success']); // Redirecionar para a rota de sucesso
-        }
+        console.log('Importação concluída com sucesso.');
+        this.router.navigate(['/wizard-importing-success']); // Redirecionar para a rota de sucesso
       },
       error => {
+        console.error('Erro durante a importação:', error);
         this.importErrorMessage = error.message; // Atribuir a mensagem de erro à variável
         this.router.navigate(['/wizard-importing-error']); // Redirecionar para a rota de erro
       }

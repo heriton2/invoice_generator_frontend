@@ -8,7 +8,8 @@ import {AppComponent} from './app.component';
 import { ImportingComponent } from './importing/importing.component';
 import {ImportingSuccessComponent} from './importing/importing-success.component';
 import {ImportingErrorComponent} from './importing/importing-error.component';
-import {InvoiceComponent} from "./importing/invoice.component";
+import {HomeComponent} from "./importing/home.component";
+import {InvoiceComponent} from "./invoice/invoice.component";
 
 const routes: Routes = [
   { path: 'importing-page', component: ImportingComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
     ImportingComponent,
     ImportingSuccessComponent,
     ImportingErrorComponent,
+    HomeComponent,
     InvoiceComponent
   ],
   imports: [
