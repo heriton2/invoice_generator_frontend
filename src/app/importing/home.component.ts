@@ -78,6 +78,7 @@ export class HomeComponent implements OnInit {
   }
 
   get totalPages() {
-    return Math.ceil(this.invoiceItems.length / this.itemsPerPage);
+    const totalPages = Math.ceil(this.invoiceItems.length / this.itemsPerPage);
+    return totalPages < 1 ? 1 : totalPages;
   }
 }

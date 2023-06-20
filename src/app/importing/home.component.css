@@ -1,24 +1,3 @@
-.importando {
-  background-color: #f2f2f2;
-  padding: 20px;
-  text-align: center;
-}
-
-.texto-centralizado {
-  margin-bottom: 20px;
-}
-
-.botao-centralizado {
-  display: block;
-  margin: 0 auto;
-}
-
-.botoes-fim-pagina {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 20px;
-}
-
 .titulo {
   background-color: lightgray;
   text-align: center;
@@ -50,6 +29,17 @@
 
 .tabela-fatura tbody tr:nth-child(odd) {
   background-color: #f2f2f2;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  margin: 0 10px;
 }
 
 

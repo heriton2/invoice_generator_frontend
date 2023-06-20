@@ -32,4 +32,10 @@
     </tr>
     </tbody>
   </table>
+  <div class="pagination">
+    <button [disabled]="currentPage === 1" (click)="previousPage()">Anterior</button>
+    <p class="current-page">Página {{ currentPage }} de {{ totalPages }}</p>
+    <button [disabled]="currentPage === totalPages" (click)="nextPage()">Próxima</button>
+  </div>
+
 </div>
