@@ -29,8 +29,8 @@ export class ImportingComponent {
       },
       error => {
         console.error('Erro durante a importação:', error);
-        this.importErrorMessage = error.message; // Atribuir a mensagem de erro à variável
-        this.router.navigate(['/wizard-importing-error']); // Redirecionar para a rota de erro
+        this.importErrorMessage = error.error; // Atribuir a mensagem de erro à variável
+        this.router.navigate(['/wizard-importing-error', { importErrorMessage: this.importErrorMessage}]); // Redirecionar para a rota de erro
       }
     );
   }
