@@ -1,5 +1,5 @@
 # Stage 1: Construir a aplicação
-FROM node:14.17.1 AS builder
+FROM node:16.14 AS builder
 
 WORKDIR /app
 
