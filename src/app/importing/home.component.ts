@@ -61,7 +61,7 @@ export class HomeComponent implements OnInit {
   }
 
   fetchInvoiceItems() {
-    this.http.get<InvoiceItem[]>('http://localhost:8080/import')
+    this.http.get<InvoiceItem[]>('https://invoicegenerator-heriton2.b4a.run/import')
       .subscribe(
         response => {
           this.invoiceItems = response;

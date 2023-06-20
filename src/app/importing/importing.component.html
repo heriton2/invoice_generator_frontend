@@ -1,7 +1,10 @@
 <div class="importando-page">
   <p class="descricao">Faça o upload do arquivo:</p>
-  <input #fileInput type="file" class="upload-button" accept=".csv" hidden>
+  <input #fileInput type="file" class="upload-button" accept=".csv" hidden (change)="handleFileInputChange($event)">
   <button class="upload-button" (click)="fileInput.click()">Clique aqui para enviar o arquivo</button>
+  <p *ngIf="fileInput.files && fileInput.files.length > 0" class="selected-file-name">
+    Arquivo selecionado: {{ fileInput.files[0].name }}
+  </p>
 </div>
 <div class="button-container">
   <button class="back-button" (click)="window.close()">Voltar</button>

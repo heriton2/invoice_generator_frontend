@@ -39,7 +39,7 @@ export class InvoiceComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    const url = `http://localhost:8080/generate-invoice/${id}`;
+    const url = `https://invoicegenerator-heriton2.b4a.run/generate-invoice/${id}`;
 
 
     this.http.get<InvoiceItem>(url).subscribe(

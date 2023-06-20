@@ -9,7 +9,7 @@ import { Router } from "@angular/router";
 })
 export class ImportingComponent {
   @ViewChild('fileInput') fileInput: any;
-
+  selectedFileName: string = '';
   constructor(private http: HttpClient, private router: Router) {}
 
   importErrorMessage: string = '';
@@ -20,7 +20,7 @@ export class ImportingComponent {
     const formData = new FormData();
     formData.append('file', file);
 
-    this.http.post('http://localhost:8080/import', formData,  { responseType: 'text', observe: "response" }).subscribe(
+    this.http.post('https://invoicegenerator-heriton2.b4a.run/import', formData,  { responseType: 'text', observe: "response" }).subscribe(
       response => {
         console.log('Importação concluída com sucesso.');
         this.totalRegistros = response.body !== null ? parseInt(response.body) : 0;
@@ -33,6 +33,11 @@ export class ImportingComponent {
         this.router.navigate(['/wizard-importing-error', { importErrorMessage: this.importErrorMessage}]); // Redirecionar para a rota de erro
       }
     );
+  }
+
+  handleFileInputChange(event: any) {
+    const file = event.target.files[0];
+    this.selectedFileName = file ? file.name : '';
   }
 
   protected readonly window = window;
